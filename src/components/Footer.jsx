@@ -9,7 +9,7 @@ const Footer = () => {
             </span>
             <span>Men</span>
             <span>Women</span>
-            <span>Children</span>
+            <span>Kids</span>
             <span>Accessories</span>
           </div>
           <div className="flex flex-col gap-1 flex-1">
@@ -42,7 +42,7 @@ const Footer = () => {
         </div>
         <div className="bottom border-t pt-5 flex items-center justify-between">
           <div className="left flex gap-5 items-center ">
-            <span className="logo uppercase text-2xl tracking-widest font-bold text-gray-900">
+            <span className="logo uppercase text-2xl tracking-widest font-bold text-gray-900 slide-headline">
               Goliath.
             </span>
             <p>

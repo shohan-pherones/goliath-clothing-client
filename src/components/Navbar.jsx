@@ -21,14 +21,14 @@ const Navbar = () => {
           <div className="left-links flex gap-5">
             <Link to="/products/1">Men</Link>
             <Link to="/products/2">Women</Link>
-            <Link to="/products/3">Children</Link>
+            <Link to="/products/3">Kids</Link>
             <Link to="/products/4">Accessories</Link>
           </div>
         </div>
         <div className="mid">
           <Link
             to="/"
-            className="logo uppercase text-2xl tracking-widest font-bold"
+            className="logo uppercase text-2xl tracking-widest font-bold slide-headline"
           >
             Goliath.
           </Link>

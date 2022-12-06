@@ -43,7 +43,7 @@ const FeaturedProducts = ({ type }) => {
   return (
     <div className="featured-products container mx-auto py-20 flex flex-col gap-10">
       <div className="top flex gap-10">
-        <h2 className="flex-[2] uppercase text-2xl tracking-widest font-bold">
+        <h2 className="flex-[2] uppercase text-2xl tracking-widest font-bold slide-headline">
           {type} products
         </h2>
         <p className="flex-[3] text-gray-500">

@@ -39,26 +39,14 @@ const data = [
   },
 ];
 
-const FeaturedProducts = ({ type }) => {
+const List = () => {
   return (
-    <div className="featured-products container mx-auto py-20 flex flex-col gap-10">
-      <div className="top flex gap-10">
-        <h2 className="flex-[2] uppercase text-2xl tracking-widest font-bold slide-headline">
-          {type} products
-        </h2>
-        <p className="flex-[3] text-gray-500">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-          explicabo earum facere totam ipsum molestiae doloremque culpa aliquam
-          porro. Dolore?
-        </p>
-      </div>
-      <div className="bottom flex gap-10 justify-center flex-wrap">
-        {data.map((item) => (
-          <Card key={item.id} item={item} />
-        ))}
-      </div>
+    <div className="list flex gap-10 flex-wrap">
+      {data.map((item) => (
+        <Card key={item.id} item={item} />
+      ))}
     </div>
   );
 };
 
-export default FeaturedProducts;
+export default List;

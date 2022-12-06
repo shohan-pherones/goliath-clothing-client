@@ -1,6 +1,7 @@
 import Slider from "../components/Slider";
 import FeaturedProducts from "../components/FeaturedProducts";
 import Categories from "../components/Categories";
+import Newsletter from "../components/Newsletter";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <FeaturedProducts type="featured" />
       <Categories />
       <FeaturedProducts type="trending" />
+      <Newsletter />
     </div>
   );
 };

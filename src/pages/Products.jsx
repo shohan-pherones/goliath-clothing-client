@@ -6,7 +6,7 @@ import List from "../components/List";
 const Products = () => {
   const param = useParams();
   const [maxPrice, setMaxPrice] = useState(1000);
-  const [sort, setSort] = useState(null);
+  const [sort, setSort] = useState("asc");
   const [selectedSubCat, setSelectedSubCat] = useState([]);
 
   const { data, loading, error } = useFetch(
@@ -64,7 +64,7 @@ const Products = () => {
             <input
               type="radio"
               id="ascending"
-              value="ascending"
+              value="asc"
               name="price"
               onChange={(e) => setSort(e.target.value)}
               className="accent-teal-500 cursor-pointer"
@@ -77,7 +77,7 @@ const Products = () => {
             <input
               type="radio"
               id="descending"
-              value="descending"
+              value="desc"
               name="price"
               onChange={(e) => setSort(e.target.value)}
               className="accent-teal-500 cursor-pointer"

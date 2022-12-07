@@ -1,13 +1,7 @@
 import { Link } from "react-router-dom";
+import { currencyFormatter } from "../utls/currencyFormatter";
 
 const Card = ({ item }) => {
-  const currencyFormatter = (price) => {
-    return price?.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD",
-    });
-  };
-
   return (
     <Link to={`/product/${item.id}`}>
       <div className="card w-80 flex flex-col gap-2 border">

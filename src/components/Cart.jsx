@@ -35,7 +35,7 @@ const Cart = () => {
             <p className="text-gray-500">{item.desc?.substring(0, 100)}</p>
             <span className="price text-xl font-medium">1 x ${item.price}</span>
           </div>
-          <DeleteOutlineIcon className="text-rose-500" />
+          <DeleteOutlineIcon className="text-rose-500 cursor-pointer" />
         </div>
       ))}
       <div className="total flex text-xl uppercase tracking-widest font-bold justify-between">

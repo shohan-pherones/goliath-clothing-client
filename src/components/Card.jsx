@@ -9,7 +9,7 @@ const Card = ({ item }) => {
   };
 
   return (
-    <Link to={`/products/${item.id}`}>
+    <Link to={`/product/${item.id}`}>
       <div className="card w-80 flex flex-col gap-2">
         <div className="images w-full h-80 overflow-hidden relative group">
           <img

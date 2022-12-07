@@ -49,7 +49,7 @@ const Navbar = () => {
             <PersonOutlineOutlinedIcon />
             <FavoriteBorderOutlinedIcon />
             <div
-              className="cart-icon relative cursor-pointer"
+              className="cart-icon relative cursor-pointer select-none"
               onClick={() => setOpen(!open)}
             >
               <ShoppingCartOutlinedIcon />

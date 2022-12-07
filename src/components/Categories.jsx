@@ -16,17 +16,17 @@ const Categories = () => {
           Men
         </Link>
       </div>
-      <div className="category-new row-span-2 relative">
+      <div className="category-featured row-span-2 relative">
         <img
           src="https://images.pexels.com/photos/9821881/pexels-photo-9821881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="A Man and a Woman Standing on the Concrete Pavement"
           className="w-full h-full object-cover"
         />
         <Link
-          to="/products/2"
+          to="/featured"
           className="absolute top-0 left-0 right-0 bottom-0 w-full h-full uppercase text-white text-5xl font-bold slide-headline bg-black/0 hover:bg-black/50 duration-500 flex justify-center items-center"
         >
-          New Arrival
+          Featured
         </Link>
       </div>
       <div className="category-kids relative">
@@ -62,7 +62,7 @@ const Categories = () => {
           className="w-full h-full object-cover"
         />
         <Link
-          to="/products/5"
+          to="/products/2"
           className="absolute top-0 left-0 right-0 bottom-0 w-full h-full uppercase text-white text-5xl font-bold slide-headline bg-black/0 hover:bg-black/50 duration-500 flex justify-center items-center"
         >
           Women
@@ -75,7 +75,7 @@ const Categories = () => {
           className="w-full h-full object-cover"
         />
         <Link
-          to="/products/6"
+          to="/trending"
           className="absolute top-0 left-0 right-0 bottom-0 w-full h-full uppercase text-white text-5xl font-bold slide-headline bg-black/0 hover:bg-black/50 duration-500 flex justify-center items-center"
         >
           Trending

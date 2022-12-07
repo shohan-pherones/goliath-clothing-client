@@ -1,50 +1,48 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useFetch } from "../hooks/useFetch";
 import List from "../components/List";
 
 const Products = () => {
-  const { categoryId } = useParams();
+  const param = useParams();
   const [maxPrice, setMaxPrice] = useState(1000);
   const [sort, setSort] = useState(null);
+  const [selectedSubCat, setSelectedSubCat] = useState([]);
+
+  const { data, loading, error } = useFetch(
+    `/sub-categories?[filters] [categories] [id] [$eq]=${+param.id}`
+  );
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const isChecked = e.target.checked;
+
+    setSelectedSubCat(
+      isChecked
+        ? [...selectedSubCat, value]
+        : selectedSubCat.filter((item) => item !== value)
+    );
+  };
 
   return (
     <div className="products container mx-auto py-20 flex gap-5">
       <div className="left flex-1 sticky h-full top-20  flex flex-col gap-5">
         <div className="filter-item">
           <h3 className="text-xl font-bold mb-1">Choose Categories</h3>
-          <div className="input-item flex items-center gap-2">
-            <input
-              type="checkbox"
-              id="1"
-              value={1}
-              className="accent-teal-500 cursor-pointer"
-            />
-            <label htmlFor="1" className="cursor-pointer">
-              Tops
-            </label>
-          </div>
-          <div className="input-item flex items-center gap-2">
-            <input
-              type="checkbox"
-              id="2"
-              value={2}
-              className="accent-teal-500 cursor-pointer"
-            />
-            <label htmlFor="2" className="cursor-pointer">
-              Coats
-            </label>
-          </div>
-          <div className="input-item flex items-center gap-2">
-            <input
-              type="checkbox"
-              id="3"
-              value={3}
-              className="accent-teal-500 cursor-pointer"
-            />
-            <label htmlFor="3" className="cursor-pointer">
-              Skirts
-            </label>
-          </div>
+          {data?.map((item) => (
+            <div className="input-item flex items-center gap-2" key={item.id}>
+              <input
+                type="checkbox"
+                id={item.id}
+                value={item.id}
+                onChange={handleChange}
+                className="accent-teal-500 cursor-pointer"
+              />
+              <label htmlFor={item.id} className="cursor-pointer">
+                {item.attributes.title}
+              </label>
+            </div>
+          ))}
         </div>
         <div className="filter-item">
           <h3 className="text-xl font-bold mb-1">Filter by Price Range</h3>
@@ -96,7 +94,12 @@ const Products = () => {
           alt="A Woman Holding a Red Flower"
           className="category-image w-full h-80 object-cover"
         />
-        <List categoryId={categoryId} maxPrice={maxPrice} sort={sort} />
+        <List
+          categoryId={param.id}
+          maxPrice={maxPrice}
+          sort={sort}
+          subCat={selectedSubCat}
+        />
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ export const useFetch = (url) => {
       try {
         setLoading(true);
         const res = await makeRequest.get(url);
+        if (!res.statusText) throw new Error("Something went wrong!");
         setData(res.data.data);
         setLoading(false);
       } catch (err) {

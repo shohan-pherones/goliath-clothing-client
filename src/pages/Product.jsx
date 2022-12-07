@@ -4,11 +4,15 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { currencyFormatter } from "../utls/currencyFormatter";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartReducer";
 
 const Product = () => {
   const param = useParams();
   const [selectedImage, setSelectedImage] = useState("img1");
   const [quantity, setQuanity] = useState(1);
+
+  const dispatch = useDispatch();
 
   const { data, loading, error } = useFetch(`/products/${param.id}?populate=*`);
 
@@ -78,7 +82,23 @@ const Product = () => {
               </button>
             </div>
             <div className="btns flex gap-5 items-center">
-              <button className="flex gap-3 text-xl items-center uppercase tracking-widest font-semibold bg-black text-white py-2 px-7 hover:bg-teal-500 hover:text-black duration-500">
+              <button
+                onClick={() =>
+                  dispatch(
+                    addToCart({
+                      id: data.id,
+                      title: data.attributes.title,
+                      desc: data.attributes.desc,
+                      price: data.attributes.price,
+                      img:
+                        process.env.REACT_APP_UPLOAD_URL +
+                        data.attributes.img1.data.attributes.url,
+                      quantity,
+                    })
+                  )
+                }
+                className="flex gap-3 text-xl items-center uppercase tracking-widest font-semibold bg-black text-white py-2 px-7 hover:bg-teal-500 hover:text-black duration-500"
+              >
                 <AddShoppingCartIcon />
                 <span>Add to cart</span>
               </button>

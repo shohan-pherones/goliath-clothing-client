@@ -6,9 +6,11 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Cart from "./Cart";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const products = useSelector((state) => state.cart.products);
 
   return (
     <nav className="navbar shadow">
@@ -54,7 +56,7 @@ const Navbar = () => {
             >
               <ShoppingCartOutlinedIcon />
               <span className="cart-count-ribbon absolute bg-teal-500 h-5 w-5 rounded-full flex items-center justify-center -top-2 -right-2 text-sm font-semibold text-white">
-                0
+                {products.length}
               </span>
             </div>
           </div>

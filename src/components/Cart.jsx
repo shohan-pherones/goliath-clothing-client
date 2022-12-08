@@ -2,6 +2,8 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem, resetCart } from "../redux/cartReducer";
 import { currencyFormatter } from "../utls/currencyFormatter";
+import { loadStripe } from "@stripe/stripe-js";
+import { makeRequest } from "../makeRequest";
 
 const Cart = () => {
   const products = useSelector((state) => state.cart.products);
@@ -18,6 +20,23 @@ const Cart = () => {
   };
 
   const dispatch = useDispatch();
+
+  const stripePromise = loadStripe(
+    "pk_test_51MCeuaH9rHnHxvW7viLS9qE10tfhllSsb1y5eqRkB8xMnrZmJVA5kg1HtSgKMwaL9Eif3zWAWfEYq3LOS4N6Ou8100kR4Qqxtr"
+  );
+
+  const handlePayment = async () => {
+    try {
+      const stripe = await stripePromise;
+      const res = await makeRequest.post("/orders", {
+        products,
+      });
+
+      await stripe.redirectToCheckout({ sessionId: res.data.stripeSession.id });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="cart flex flex-col gap-5 bg-white shadow-xl p-10 w-[35rem] absolute z-[999] right-[5rem] top-[5rem]">
@@ -47,7 +66,10 @@ const Cart = () => {
         <span>Subtotal</span>
         <span>{total()}</span>
       </div>
-      <button className="bg-teal-500 text-white text-lg uppercase tracking-wider font-semibold py-2 hover:bg-black duration-500">
+      <button
+        onClick={handlePayment}
+        className="bg-teal-500 text-white text-lg uppercase tracking-wider font-semibold py-2 hover:bg-black duration-500"
+      >
         Proceed to checkout
       </button>
       <button
